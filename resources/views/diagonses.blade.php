@@ -20,43 +20,56 @@
             </div> -->
             <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
                 <!-- <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>  -->
-                <a href="javascript:;" onclick="diagonse_add('添加记录','diagonse_add','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a></span> 
+                <a href="javascript:;" onclick="diagonse_add('添加记录','{{url('diagonse_add')}}/{{$patient->id}}','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加记录</a></span> 
             </div>
             <div class="mt-20">
                 @foreach($diagonses as $diagonse)
-                <!-- <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">Panel title</h4>
-                    </div>
-                    <div class="panel-body">
-                        Panel content
-                    </div>
-                </div> -->
                 <div class="panel panel-primary">
-                    <div class="panel-header">时间：{{$diagonse->created_at}}</div>
+                    <div class="panel-header">时间：{{$diagonse->created_at}} &nbsp&nbsp 姓名: {{$patient->name}}</div>
                     <div class="panel-body">
                         <div>
-                            <div class="row cl">
-                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>名称：</label>
+
+                            <div class="row cl mb-15">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>舌像图：</label>
+                                <div class="formControls col-xs-5 col-sm-7">
+                                    <img id="preview_id" src="{{asset($diagonse->img_path)}}" style="border: 1px solid #B8B9B9; width: 200px; height: 200px;" />
+                                </div>
+                                <div class="col-4"> </div>
+                            </div>
+
+                            <div class="row cl mb-15">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>舌质症状：</label>
                                 <div class="formControls col-xs-5 col-sm-7">
                                     <span>{{$diagonse->symptomOne->text}}</span>
                                 </div>
                                 <div class="col-4"> </div>
                             </div>
 
-                            <div class="row cl">
-                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>浏览图</label>
+                            <div class="row cl mb-15">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>舌苔症状：</label>
                                 <div class="formControls col-xs-5 col-sm-7">
-                                    <img id="preview_id" src="{{asset('admin/static/h-ui.admin/images/icon-add.png')}}" style="border: 1px solid #B8B9B9; width: 100px; height: 100px;" onclick="$('#input_id').click()" />
-                                    <input type="file" name="file" id="input_id" style="display: none;" onchange="return uploadImageToServer('input_id','images', 'preview_id');" />
+                                    <span>{{$diagonse->symptomTwo->text}}</span>
                                 </div>
-                                <div class="col-4"> </div>
+                                <div class="col-4" > </div>
                             </div>
-
-                            <div class="row cl">
-                                <label class="form-label col-xs-4 col-sm-3">详细内容：</label>
+                            
+                            <div class="row cl mb-15">
+                                <label class="form-label col-xs-4 col-sm-3"><span class="c-red"></span>临床症状：</label>
                                 <div class="formControls col-xs-5 col-sm-7">
-                                    <script id="editor" type="text/plain" style="width:100%; height:400px;"></script>
+                                    <span>{{$diagonse->mean}}</span>
+                                </div>
+                                <div class="col-4" > </div>
+                            </div>
+                            
+
+                            <div class="row cl mb-15">
+                                <label class="form-label col-xs-4 col-sm-3">诊断详情：</label>
+                                <div class="formControls col-xs-5 col-sm-7">
+                                    <div class="content">
+                                        <p>{{$diagonse->summary}}</p>
+                                    </div>
+
+                                    <!-- <script id="editor" type="text/plain" style="width:100%; height:400px;"></script> -->
                                 </div>
                             </div>
                         </div>

@@ -16,24 +16,7 @@ function uploadFileToServer(fileElmId, type, id)
 	return false;
 }
 
-function uploadImageToServer(fileElmId, type, id)
-{
-	$("#"+id).attr("src", "/image/loading_072.gif");
-	$.ajaxFileUpload({
-		url: '/service/upload/' + type,
-		fileElementId: fileElmId,
-		dataType: 'text',
-		success: function (data)
-		{
-			var result = JSON.parse(data);
-			$("#"+id).attr("src", result.uri);
-		},
-    error: function (XMLHttpRequest, textStatus, errorThrown) {
-      alert(errorThrown);
-    }
-	});
-	return false;
-}
+
 
 /// JQuery Extends
 jQuery.extend({

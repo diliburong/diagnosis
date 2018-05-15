@@ -114,14 +114,14 @@
 			</dd>
 		</dl> -->
 		
-		<!-- <dl id="menu-order">
-			<dt><i class="Hui-iconfont">&#xe687;</i> 订单管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-			<dd>
+		<dl id="menu-order">
+			<dt><i class="Hui-iconfont">&#xe687;</i><a href="{{url('/')}}">首页</a> </dt>
+			<!-- <dd>
 				<ul>
 					<li><a href="order_list.html" title="订单列表">订单列表</a></li>
 				</ul>
-			</dd>
-		</dl> -->
+			</dd> -->
+		</dl>
 
 		@if(Auth::user()->role_id == 0 ) 
 		<dl id="menu-member">
@@ -178,7 +178,7 @@
 <script type="text/javascript" src="{{asset('admin/lib/layer/2.4/layer.js')}}"></script>
 <script type="text/javascript" src="{{asset('admin/static/h-ui/js/H-ui.js')}}"></script> 
 <script type="text/javascript" src="{{asset('admin/static/h-ui.admin/js/H-ui.admin.page.js')}}"></script>
-
+<script type="text/javascript" src="{{asset('js/echarts.js')}}"></script> 
 
 <script>
 	function my_info(title,url,w,h){

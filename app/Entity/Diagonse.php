@@ -18,4 +18,14 @@ class Diagonse extends Model
     {
         return $this->hasOne('App\Entity\Symptom', 'id', 'symptom_two');
     }
+
+    // public function mean()
+    // {
+    //     return $this->hasOne('App\Entity\Mean', 's_two', 'symptom_two');
+    // }
+
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\User')->withDefault();
+    // }
 }

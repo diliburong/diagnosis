@@ -16,7 +16,10 @@ class PatientController extends Controller
 
     public function toPatientList(Request $request)
     {
-        $patients = Patient::paginate(10);
+        $request->query('page', 'default');
+        $searchName = '%'. $request->query('name', '') . '%';
+
+        $patients = Patient::where('name', 'like',  $searchName)->paginate(10);
         return view('patients')->with('patients', $patients);
     }
 

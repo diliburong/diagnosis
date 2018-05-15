@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Entity\Diagonse;
 use App\Entity\Symptom;
+use App\Entity\Patient;
+use Illuminate\Support\Facades\DB;
+use App\Entity\Mean;
 
 class DiagonseController extends Controller
 {
@@ -19,15 +22,24 @@ class DiagonseController extends Controller
     {
 
         $diagonses = Diagonse::where('patient_id', $patientId)->get();
-        
 
-        return view('diagonses')->with('diagonses', $diagonses);
+        foreach ($diagonses as $key => $diagonse) {
+            # code...
+            $mean = Mean::where(['s_one'=>$diagonse->symptom_one,'s_two'=>$diagonse->symptom_two])->first()->text;
+            $diagonse->mean = $mean;
+        }
+
+        $patient = Patient::find($patientId);
+
+        return view('diagonses')->with('diagonses', $diagonses)
+                                ->with('patient',  $patient);
     }
 
-    public function toDiagonseAdd()
+    public function toDiagonseAdd($patientId)
     {
-        $symptoms = Symptom::whereNull('parent_id')->get();
-        return view('diagonse_add')->with('symptoms', $symptoms);
-
+        $symptoms = Symptom::where('parent_id', 0)->get();
+       $patient = Patient::find($patientId);
+        return view('diagonse_add')->with('symptoms', $symptoms)
+                                    ->with('patient',  $patient);
     }
 }

@@ -9,22 +9,29 @@
     <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> 用户中心 <span class="c-gray en">&gt;</span> 会员列表<a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新" ><i class="Hui-iconfont">&#xe68f;</i></a></nav>
     <div class="Hui-article">
         <article class="cl pd-20">
-            <div class="text-c"> 日期范围：
-                <input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin" class="input-text Wdate" style="width:120px;">
-                -
-                <input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d'})" id="datemax" class="input-text Wdate" style="width:120px;">
-                <input type="text" class="input-text" style="width:250px" placeholder="输入会员名称、电话、邮箱" id="" name="">
-                <button type="submit" class="btn btn-success radius" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
+            <div class="text-c">
+                <!-- <input type="text" onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'datemax\')||\'%y-%M-%d\'}'})" id="datemin" class="input-text Wdate" style="width:120px;"> -->
+                <!-- <input type="text" onfocus="WdatePicker({minDate:'#F{$dp.$D(\'datemin\')}',maxDate:'%y-%M-%d'})" id="datemax" class="input-text Wdate" style="width:120px;"> -->
+                
+                <form action="{{url('patients')}}" method="get">
+                
+                <input type="text" class="input-text" style="width:250px" placeholder="输入病人名称" id="" name="name">
+                <button type="submit" class="btn btn-success radius" id="serachBtn" name=""><i class="Hui-iconfont">&#xe665;</i> 搜用户</button>
+                
+                </form>
+                <script>
+
+                </script>
             </div>
             <div class="cl pd-5 bg-1 bk-gray mt-20"> <span class="l">
-                <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a> 
+                <!-- <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>  -->
                 <a href="javascript:;" onclick="patient_add('添加用户','patient_add','','510')" class="btn btn-primary radius"><i class="Hui-iconfont">&#xe600;</i> 添加用户</a></span> 
             </div>
             <div class="mt-20">
                 <table class="table table-border table-bordered table-hover table-bg table-sort">
                     <thead>
                         <tr class="text-c">
-                            <th width="25"><input type="checkbox" name="" value=""></th>
+                            <!-- <th width="25"><input type="checkbox" name="" value=""></th> -->
                             <th width="50">ID</th>
                             <th width="80">姓名</th>
                             <th width="40">性别</th>
@@ -39,9 +46,9 @@
                     <tbody>
                         @foreach($patients as $patient)
                         <tr class="text-c">
-                            <td><input type="checkbox" value="{{$patient->id}}" name=""></td>
+                            <!-- <td><input type="checkbox" value="{{$patient->id}}" name=""></td> -->
                             <td>{{$patient->id}}</td>
-                            <td><a href="{{url('diagnoes')}}/{{$patient->id}}">{{$patient->name}}</a></td>
+                            <td><a href="{{url('diagonse')}}/{{$patient->id}}">{{$patient->name}}</a></td>
                             <!-- <td><u style="cursor:pointer" class="text-primary" onclick="patient_show('{{$patient->name}}','patient-show.html','10001','360','400')">{{$patient->name}}</u></td> -->
                             <td>
                                 @if($patient->sex ==1)
@@ -69,7 +76,7 @@
                         @endforeach
                     </tbody>
                 </table>
-                {{ $patients->links('vendor.pagination.default') }}
+                {{ $patients->appends(['name' => request()->query('name', '')])->links('vendor.pagination.default') }}
             </div>
         </article>
     </div>
@@ -177,7 +184,11 @@ function patient_del(obj,id){
 }
 
 
-    
+// $('#serachBtn').click(function(){
+//     alert($('input[name=search]').val());
+
+//     // location.href = "{{url('patients')}}"
+// })
 
 </script>
 
