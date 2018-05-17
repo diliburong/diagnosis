@@ -31,8 +31,8 @@
 <body>
 <header class="navbar-wrapper">
 	<div class="navbar navbar-fixed-top">
-		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="/aboutHui.shtml">H-ui.admin</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="/aboutHui.shtml">H-ui</a> 
-			<span class="logo navbar-slogan f-l mr-10 hidden-xs">v3.0</span> 
+		<div class="container-fluid cl"> <a class="logo navbar-logo f-l mr-10 hidden-xs" href="{{url('/')}}">舌诊系统</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="{{url('/')}}">H-ui</a> 
+			<span class="logo navbar-slogan f-l mr-10 hidden-xs">v1.0</span> 
 			<a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
 			<nav class="nav navbar-nav">
 				<!-- <ul class="cl">
@@ -60,7 +60,7 @@
 						<ul class="dropDown-menu menu radius box-shadow">
 						 
 							<li><a href="javascript:;" onclick="my_info('个人信息','my_info','','510')"> 个人信息</a></span> </li>
-							<li><a href="{{route('logout')}}">切换账户</a></li>
+							<!-- <li><a href="{{route('logout')}}">切换账户</a></li> -->
 							<li>
 								<a href="{{ route('logout') }}"
 									onclick="event.preventDefault();
@@ -74,7 +74,7 @@
 							</li>
 						</ul>
 					</li>
-					<li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li>
+					<!-- <li id="Hui-msg"> <a href="#" title="消息"><span class="badge badge-danger">1</span><i class="Hui-iconfont" style="font-size:18px">&#xe68a;</i></a> </li> -->
 
 					@else
 
@@ -128,8 +128,8 @@
 			<dt><i class="Hui-iconfont">&#xe60d;</i> 用户管理<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
 			<dd>
 				<ul>
-					<li><a href="{{route('users')}}" title="会员列表">会员列表</a></li>
-					<li><a href="member-del.html" title="删除的会员">删除的会员</a></li>
+					<li><a href="{{route('users')}}" title="用户列表">用户列表</a></li>
+					<!-- <li><a href="member-del.html" title="删除的会员">删除的会员</a></li> -->
 					<!-- <li><a href="member-record-browse.html" title="浏览记录">浏览记录</a></li> -->
 					<!-- <li><a href="member-record-share.html" title="分享记录">分享记录</a></li> -->
 				</ul>

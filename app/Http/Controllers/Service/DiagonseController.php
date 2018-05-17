@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Service;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Entity\Diagonse;
+use App\Entity\Patient;
 use App\Model\M3Result;
 use Auth;
 
